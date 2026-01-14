@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Merge - Addictive Puzzle Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 60px 20px 40px;
+      }
+
+      .logo {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .tagline {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin-bottom: 30px;
+      }
+
+      .hero {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 50px 30px;
+        text-align: center;
+        margin-bottom: 50px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 18px 40px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+      }
+
+      .download-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .download-btn:active {
+        transform: translateY(-1px);
+      }
+
+      .download-icon {
+        font-size: 1.5rem;
+      }
+
+      .file-size {
+        margin-top: 15px;
+        opacity: 0.8;
+        font-size: 0.9rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+      }
+
+      .feature-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .feature-description {
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .how-to-install {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px 30px;
+        margin-bottom: 50px;
+      }
+
+      .how-to-install h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .step {
+        display: flex;
+        gap: 20px;
+        align-items: start;
+      }
+
+      .step-number {
+        background: rgba(255, 255, 255, 0.2);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .step-content {
+        flex: 1;
+      }
+
+      .step-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          font-size: 2.5rem;
+        }
+
+        .tagline {
+          font-size: 1.1rem;
+        }
+
+        .hero {
+          padding: 30px 20px;
+        }
+
+        .download-btn {
+          padding: 15px 30px;
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <header>
+          <div class="logo">🔢 Number Merge</div>
+          <div class="tagline">Merge numbers, reach higher scores!</div>
+        </header>
+
+        <div class="hero">
+          <h1 style="font-size: 2rem; margin-bottom: 20px">
+            Download Now for Android
+          </h1>
+          <p style="margin-bottom: 30px; opacity: 0.9">
+            The most addictive number puzzle game of 2024
+          </p>
+
+          <a :href="apkUrl" class="download-btn" @click="trackDownload">
+            <span class="download-icon">📥</span>
+            <span>Download APK</span>
+          </a>
+
+          <div class="file-size">Version {{ version }} • {{ fileSize }}</div>
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <div class="feature-title">Easy to Learn</div>
+            <div class="feature-description">
+              Simple swipe controls that anyone can master in seconds
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <div class="feature-title">Brain Training</div>
+            <div class="feature-description">
+              Challenge yourself with increasingly difficult number combinations
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <div class="feature-title">High Scores</div>
+            <div class="feature-description">
+              Compete with yourself and beat your personal best
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <div class="feature-title">Offline Play</div>
+            <div class="feature-description">
+              Play anytime, anywhere without internet connection
+            </div>
+          </div>
+        </div>
+
+        <div class="how-to-install">
+          <h2>How to Install</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <div class="step-title">Download the APK</div>
+                <div>Click the download button above to get the APK file</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <div class="step-title">Enable Unknown Sources</div>
+                <div>Go to Settings → Security → Enable "Unknown Sources"</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <div class="step-title">Install the Game</div>
+                <div>Open the downloaded APK file and tap "Install"</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <div class="step-title">Start Playing!</div>
+                <div>Launch Number Merge and enjoy the game</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer>
+          <p>&copy; 2024 Number Merge. All rights reserved.</p>
+          <p style="margin-top: 10px; font-size: 0.9rem">
+            Made with ❤️ for puzzle game lovers
+          </p>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            // UPDATE THIS URL to point to your actual APK file
+            apkUrl: "/downloads/number-merge.apk", // Or use GitHub releases URL
+            version: "1.0.0",
+            fileSize: "15 MB",
+          };
+        },
+        methods: {
+          trackDownload() {
+            console.log("Download initiated");
+            // You can add analytics tracking here
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
