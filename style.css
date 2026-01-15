@@ -45,12 +45,14 @@ html {
 .download-btn {
   display: inline-block;
   padding: 15px 40px;
+  text-align: center;
   font-size: 1.2rem;
   color: white;
   background: linear-gradient(135deg, #ff4a63, #f16fff);
-  border-radius: 50px;
+  border-radius: 20px;
   text-decoration: none;
   transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 240px;
 }
 .download-btn:hover {
   transform: translateY(-3px);
@@ -75,6 +77,8 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  border-radius: 14px;
 }
 .mockup {
   max-width: 100%;
