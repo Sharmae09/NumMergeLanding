@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number Merge - Addictive Puzzle Game</title>
-    <link rel="icon" type="image/png" href="/ico.png" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+
+    <link rel="icon" type="image/png" href="./ico.png" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div id="app">
@@ -15,26 +15,28 @@
         <div class="left-column">
           <header>
             <div class="logo">
-              <img src="/ico.png" alt="Game Mockup" class="logo-icon" />
-
+              <img src="./ico.png" alt="Logo" class="logo-icon" />
               Number Merge
             </div>
             <div class="tagline">Merge numbers, reach higher scores!</div>
           </header>
 
-          <a :href="apkUrl" class="download-btn" @click="trackDownload">
+          <a
+            href="./downloads/number-merge.apk"
+            class="download-btn"
+            id="downloadBtn"
+          >
             Download APK
           </a>
-          <div class="version">Version {{ version }} • {{ fileSize }}</div>
+
+          <div class="version" id="versionInfo"></div>
 
           <div class="features">
             <div class="feature">
-              <span class="feature-title">Easy to Learn:</span> Simple swipe
-              controls
+              <span class="feature-title">Easy to Learn:</span> Simple swipe controls
             </div>
             <div class="feature">
-              <span class="feature-title">Brain Training:</span> Challenge
-              yourself
+              <span class="feature-title">Brain Training:</span> Challenge yourself
             </div>
             <div class="feature">
               <span class="feature-title">High Scores:</span> Beat your best
@@ -47,13 +49,11 @@
 
         <!-- Right Column -->
         <div class="right-column">
-          <img src="/mockup.jpg" alt="Game Mockup" class="mockup" />
+          <img src="./mockup.jpg" alt="Game Mockup" class="mockup" />
         </div>
       </div>
-
-      <!-- <footer>&copy; 2024 Number Merge. Made with ❤️ for puzzle lovers.</footer> -->
     </div>
 
-    <script src="app.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>

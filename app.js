@@ -1,16 +1,10 @@
-const { createApp } = Vue;
+const version = "1.0.0";
+const fileSize = "15 MB";
 
-createApp({
-  data() {
-    return {
-      apkUrl: "/downloads/number-merge.apk",
-      version: "1.0.0",
-      fileSize: "15 MB",
-    };
-  },
-  methods: {
-    trackDownload() {
-      console.log("Download initiated");
-    },
-  },
-}).mount("#app");
+document.getElementById(
+  "versionInfo"
+).textContent = `Version ${version} • ${fileSize}`;
+
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  console.log("Download initiated");
+});
